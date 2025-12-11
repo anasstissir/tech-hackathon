@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #f0f4f8;
+  color: #1a202c;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* Skype-like gradient background */
+.skype-bg {
+  background: linear-gradient(135deg, #e8f4fc 0%, #f0f4f8 50%, #e4ecf4 100%);
+}
+
+/* Glassmorphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(20px);
+}
