@@ -374,93 +374,93 @@ export const ElevenLabsWidget = ({ squatState }) => {
 
             {/* Session Summary Modal */}
             {showSummary && sessionSummary && (
-                <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-                    <div className="bg-slate-800 rounded-3xl shadow-2xl border border-slate-700 max-w-md w-full max-h-[90vh] overflow-y-auto">
+                <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+                    <div className="bg-white rounded-3xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto">
                         {/* Header */}
-                        <div className="flex items-center justify-between p-6 border-b border-slate-700">
-                            <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-                                <FileText className="w-6 h-6 text-blue-400" />
+                        <div className="flex items-center justify-between p-6 border-b border-gray-100">
+                            <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-2">
+                                <FileText className="w-6 h-6 text-blue-500" />
                                 Session Summary
                             </h2>
                             <button
                                 onClick={() => setShowSummary(false)}
-                                className="text-slate-400 hover:text-white transition-colors"
+                                className="text-gray-400 hover:text-gray-600 transition-colors p-1 hover:bg-gray-100 rounded-full"
                             >
                                 <X className="w-6 h-6" />
                             </button>
                         </div>
 
                         {/* Stats Grid */}
-                        <div className="p-6 space-y-6">
+                        <div className="p-6 space-y-5">
                             {/* Main Stats */}
                             <div className="grid grid-cols-2 gap-4">
-                                <div className="bg-slate-900 rounded-xl p-4 text-center">
-                                    <div className="text-3xl font-bold text-blue-400">{sessionSummary.totalReps}</div>
-                                    <div className="text-xs text-slate-400 uppercase">Squats</div>
+                                <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-5 text-center">
+                                    <div className="text-4xl font-bold text-blue-600">{sessionSummary.totalReps}</div>
+                                    <div className="text-xs text-blue-600/70 uppercase font-semibold mt-1">Squats</div>
                                 </div>
-                                <div className="bg-slate-900 rounded-xl p-4 text-center">
-                                    <div className="text-3xl font-bold text-white">{sessionSummary.duration}</div>
-                                    <div className="text-xs text-slate-400 uppercase">Duration</div>
+                                <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-5 text-center">
+                                    <div className="text-3xl font-bold text-gray-700">{sessionSummary.duration}</div>
+                                    <div className="text-xs text-gray-500 uppercase font-semibold mt-1">Duration</div>
                                 </div>
                             </div>
 
                             {/* Form Score */}
-                            <div className="bg-slate-900 rounded-xl p-4">
-                                <div className="flex items-center justify-between mb-2">
-                                    <span className="text-sm text-slate-400">Form Score</span>
+                            <div className="bg-gray-50 rounded-2xl p-5">
+                                <div className="flex items-center justify-between mb-3">
+                                    <span className="text-sm font-medium text-gray-600">Form Score</span>
                                     <span className={`text-2xl font-bold ${
-                                        sessionSummary.formScore >= 80 ? 'text-green-400' :
-                                        sessionSummary.formScore >= 50 ? 'text-yellow-400' : 'text-red-400'
+                                        sessionSummary.formScore >= 80 ? 'text-green-600' :
+                                        sessionSummary.formScore >= 50 ? 'text-yellow-600' : 'text-red-600'
                                     }`}>{sessionSummary.formScore}%</span>
                                 </div>
-                                <div className="w-full bg-slate-700 rounded-full h-3">
+                                <div className="w-full bg-gray-200 rounded-full h-3">
                                     <div 
                                         className={`h-3 rounded-full transition-all ${
-                                            sessionSummary.formScore >= 80 ? 'bg-green-500' :
-                                            sessionSummary.formScore >= 50 ? 'bg-yellow-500' : 'bg-red-500'
+                                            sessionSummary.formScore >= 80 ? 'bg-gradient-to-r from-green-400 to-green-500' :
+                                            sessionSummary.formScore >= 50 ? 'bg-gradient-to-r from-yellow-400 to-yellow-500' : 'bg-gradient-to-r from-red-400 to-red-500'
                                         }`}
                                         style={{ width: `${sessionSummary.formScore}%` }}
                                     ></div>
                                 </div>
-                                <div className="flex justify-between mt-2 text-xs text-slate-500">
+                                <div className="flex justify-between mt-3 text-xs text-gray-500">
                                     <span>✅ {sessionSummary.goodFormReps} good reps</span>
                                     <span>❌ {sessionSummary.badFormReps} to improve</span>
                                 </div>
                             </div>
 
                             {/* Best Depth */}
-                            <div className="bg-slate-900 rounded-xl p-4 flex items-center justify-between">
+                            <div className="bg-gray-50 rounded-2xl p-5 flex items-center justify-between">
                                 <div>
-                                    <div className="text-sm text-slate-400">Best Depth</div>
-                                    <div className="text-xs text-slate-500">
+                                    <div className="text-sm font-medium text-gray-600">Best Depth</div>
+                                    <div className="text-xs text-gray-500 mt-0.5">
                                         {sessionSummary.bestDepth <= 90 ? '🏆 Excellent!' : 
                                          sessionSummary.bestDepth <= 100 ? '👍 Good' : '📉 Needs work'}
                                     </div>
                                 </div>
-                                <div className="text-3xl font-mono font-bold text-white">{sessionSummary.bestDepth}°</div>
+                                <div className="text-3xl font-mono font-bold text-gray-800">{sessionSummary.bestDepth}°</div>
                             </div>
 
                             {/* Errors Breakdown */}
                             {sessionSummary.totalErrors > 0 && (
-                                <div className="bg-slate-900 rounded-xl p-4">
-                                    <div className="text-sm text-slate-400 mb-3">Errors Detected</div>
+                                <div className="bg-red-50 rounded-2xl p-5">
+                                    <div className="text-sm font-medium text-red-700 mb-3">Errors Detected</div>
                                     <div className="space-y-2">
                                         {sessionSummary.errors.back > 0 && (
                                             <div className="flex justify-between text-sm">
-                                                <span className="text-slate-300">🔴 Forward lean (back)</span>
-                                                <span className="text-red-400">{sessionSummary.errors.back}x</span>
+                                                <span className="text-gray-700">🔴 Forward lean (back)</span>
+                                                <span className="text-red-600 font-semibold">{sessionSummary.errors.back}x</span>
                                             </div>
                                         )}
                                         {sessionSummary.errors.knees > 0 && (
                                             <div className="flex justify-between text-sm">
-                                                <span className="text-slate-300">🔴 Knees over toes</span>
-                                                <span className="text-red-400">{sessionSummary.errors.knees}x</span>
+                                                <span className="text-gray-700">🔴 Knees over toes</span>
+                                                <span className="text-red-600 font-semibold">{sessionSummary.errors.knees}x</span>
                                             </div>
                                         )}
                                         {sessionSummary.errors.tooLow > 0 && (
                                             <div className="flex justify-between text-sm">
-                                                <span className="text-slate-300">🔴 Too deep</span>
-                                                <span className="text-red-400">{sessionSummary.errors.tooLow}x</span>
+                                                <span className="text-gray-700">🔴 Too deep</span>
+                                                <span className="text-red-600 font-semibold">{sessionSummary.errors.tooLow}x</span>
                                             </div>
                                         )}
                                     </div>
@@ -469,27 +469,27 @@ export const ElevenLabsWidget = ({ squatState }) => {
 
                             {/* Main Issue */}
                             {sessionSummary.mainIssue !== 'None' && (
-                                <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-4">
-                                    <div className="text-sm text-yellow-400 font-semibold">💡 Focus Area</div>
-                                    <div className="text-white mt-1">{sessionSummary.mainIssue}</div>
+                                <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5">
+                                    <div className="text-sm text-amber-700 font-semibold">💡 Focus Area</div>
+                                    <div className="text-gray-800 mt-1">{sessionSummary.mainIssue}</div>
                                 </div>
                             )}
 
                             {/* Perfect Session */}
                             {sessionSummary.totalErrors === 0 && sessionSummary.totalReps > 0 && (
-                                <div className="bg-green-500/10 border border-green-500/30 rounded-xl p-4 text-center">
-                                    <div className="text-2xl mb-1">🎉</div>
-                                    <div className="text-green-400 font-bold">Perfect Session!</div>
-                                    <div className="text-sm text-slate-400">No form errors detected</div>
+                                <div className="bg-green-50 border border-green-200 rounded-2xl p-5 text-center">
+                                    <div className="text-3xl mb-2">🎉</div>
+                                    <div className="text-green-700 font-bold text-lg">Perfect Session!</div>
+                                    <div className="text-sm text-green-600">No form errors detected</div>
                                 </div>
                             )}
                         </div>
 
                         {/* Footer */}
-                        <div className="p-6 border-t border-slate-700">
+                        <div className="p-6 border-t border-gray-100">
                             <button
                                 onClick={() => setShowSummary(false)}
-                                className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 rounded-xl transition-all"
+                                className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold py-3 rounded-xl transition-all shadow-lg shadow-blue-500/25"
                             >
                                 Close
                             </button>

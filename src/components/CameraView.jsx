@@ -74,16 +74,16 @@ export const CameraView = ({ onPoseDetected }) => {
     }, []);
 
     return (
-        <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl border-2 border-slate-700">
+        <div className="relative w-full h-full">
             <Webcam
                 ref={webcamRef}
                 className="absolute top-0 left-0 w-full h-full object-cover"
-                mirrored={true} // Important for fitness mirrors
+                mirrored={true}
             />
             <canvas
                 ref={canvasRef}
                 className="absolute top-0 left-0 w-full h-full object-cover"
-                style={{ transform: 'scaleX(-1)' }} // Mirror canvas to match webcam
+                style={{ transform: 'scaleX(-1)' }}
             />
         </div>
     );
